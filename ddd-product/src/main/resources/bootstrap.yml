@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: ddd-product
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: d3fdbc2b-b57d-4289-984d-76eda54684b0
