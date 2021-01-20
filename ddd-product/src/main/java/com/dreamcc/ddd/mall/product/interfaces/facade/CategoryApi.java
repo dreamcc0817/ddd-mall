@@ -27,6 +27,6 @@ public class CategoryApi {
 
     @GetMapping("/getAssermblyCategory")
     public R getAssermblyCategory() {
-        return R.ok().put("categoryList", categoryService.getAssermblyCategory());
+        return R.ok().put("result", categoryService.getAssermblyCategory());
     }
 }

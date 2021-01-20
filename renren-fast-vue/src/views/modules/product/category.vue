@@ -1,8 +1,8 @@
 <template>
   <el-tree
-    :data="data"
-    :props="defaultProps"
-    @node-click="handleNodeClick"
+    :data = "menus"
+    :props = "defaultProps"
+    @node-click = "handleNodeClick"
   ></el-tree>
 </template>
 
@@ -14,28 +14,32 @@ export default {
 //import 引入的组件需要注入到对象中才能使用
 components: {},
 props: {},
-// data() {
-// //这里存放数据
-// return {
-//     data: [],
-//     defaultProps:{
-//         children: "children",
-//         label: "label"
-//     }
-// };
-// },
+data() {
+//这里存放数据
+return {
+    menus : [],
+    defaultProps:{
+        children: "children",
+        label: "name"
+    }
+};
+},
 //计算属性 类似于 data 概念
 computed: {},
 //监控 data 中的数据变化
 watch: {},
 //方法集合
 methods: {
+  handleNodeClick(){
+     console.log("success",data)
+  },
     getMenus(){
             this.$http({
-            url: this.$http.adornUrl('/category/getAssermblyCategory'),
+            url: this.$http.adornUrl('/product/category/getAssermblyCategory'),
             method: 'get'
-            }).then(data => {
+            }).then(({data}) => {
             console.log("success",data)
+            this.menus = data.result;
             })
     }
 },
