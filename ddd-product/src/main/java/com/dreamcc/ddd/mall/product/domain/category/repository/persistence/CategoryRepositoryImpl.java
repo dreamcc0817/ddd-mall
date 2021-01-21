@@ -27,4 +27,9 @@ public class CategoryRepositoryImpl  implements CategoryRepositoryInterface {
     public List<CategoryPO> getAllCategory() {
         return categoryDao.selectList(Wrappers.emptyWrapper());
     }
+
+    @Override
+    public int deleteCategory(List<String> ids) {
+        return categoryDao.deleteBatchIds(ids);
+    }
 }

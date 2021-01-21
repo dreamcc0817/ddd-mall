@@ -1,4 +1,4 @@
-package com.dreamcc.ddd.mall.product.domain.service;
+package com.dreamcc.ddd.mall.product.domain.category.service;
 
 import com.dreamcc.ddd.mall.product.domain.category.entity.CategoryEntity;
 import com.dreamcc.ddd.mall.product.domain.category.repository.po.CategoryPO;

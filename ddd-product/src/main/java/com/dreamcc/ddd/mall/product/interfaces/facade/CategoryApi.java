@@ -1,12 +1,12 @@
 package com.dreamcc.ddd.mall.product.interfaces.facade;
 
 
-import com.dreamcc.ddd.mall.product.domain.service.CategoryService;
+import com.dreamcc.ddd.mall.product.domain.category.service.CategoryService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import utils.R;
+
+import java.util.List;
 
 /**
  * @author dreamcc
@@ -29,4 +29,11 @@ public class CategoryApi {
     public R getAssermblyCategory() {
         return R.ok().put("result", categoryService.getAssermblyCategory());
     }
+
+    @DeleteMapping("/deleteCategory")
+    public R deleteCategory(@RequestParam List<String> ids) {
+        categoryService.deleteCategory(ids);
+        return R.ok();
+    }
+
 }

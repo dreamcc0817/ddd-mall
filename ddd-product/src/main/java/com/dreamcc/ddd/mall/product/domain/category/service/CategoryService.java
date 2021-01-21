@@ -1,4 +1,4 @@
-package com.dreamcc.ddd.mall.product.domain.service;
+package com.dreamcc.ddd.mall.product.domain.category.service;
 
 import com.dreamcc.ddd.mall.product.domain.category.entity.CategoryEntity;
 import com.dreamcc.ddd.mall.product.domain.category.repository.facade.CategoryRepositoryInterface;
@@ -39,5 +39,15 @@ public class CategoryService {
                 .peek(categoryEntity -> categoryEntity.setChildren(getChildrens(categoryEntity,all)))
                 .sorted(Comparator.comparingInt(menu -> (menu.getSort() == null ? 0 : menu.getSort())))
                 .collect(Collectors.toList());
+    }
+
+    /**
+     * 批量删除目录
+     * @param ids 目录ID
+     * @return 删除数量
+     */
+    public int deleteCategory(List<String> ids){
+        //TODO 验证是否其他地方有引用
+        return categoryRepositoryInterface.deleteCategory(ids);
     }
 }

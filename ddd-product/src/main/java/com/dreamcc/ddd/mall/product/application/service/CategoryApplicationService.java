@@ -1,7 +1,7 @@
 package com.dreamcc.ddd.mall.product.application.service;
 
 import com.dreamcc.ddd.mall.product.domain.category.entity.CategoryEntity;
-import com.dreamcc.ddd.mall.product.domain.service.CategoryService;
+import com.dreamcc.ddd.mall.product.domain.category.service.CategoryService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
