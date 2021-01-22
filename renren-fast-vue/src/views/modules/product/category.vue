@@ -4,6 +4,7 @@
     :props="defaultProps"
     @node-click="handleNodeClick"
     :expand-on-click-node="false"
+    :default-expanded-keys="expandedKey"
     show-checkbox
     node-key="catId"
   >
@@ -32,9 +33,6 @@
 </template>
 
 <script>
-//这里可以导入其他文件（比如：组件，工具 js，第三方插件 js，json 文件，图片文件等等）
-//例如：import 《组件名称》 from '《组件路径》';
-
 export default {
   //import 引入的组件需要注入到对象中才能使用
   components: {},
@@ -56,7 +54,7 @@ export default {
   //方法集合
   methods: {
     handleNodeClick() {
-      console.log("success", data);
+      console.log("success", this.data);
     },
     getMenus() {
       this.$http({
@@ -65,6 +63,31 @@ export default {
       }).then(({ data }) => {
         console.log("success", data);
         this.menus = data.result;
+      });
+    },
+    remove(node, data) {
+      var ids = [data.catId];
+      this.$confirm(`是否删除【${data.name}】菜单?`, "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      }).then(() => {
+        this.$http({
+          url: this.$http.adornUrl("/product/category/deleteCategory"),
+          method: "post",
+          data: this.$http.adornData(ids, false),
+        }).then(({ data }) => {
+          this.$message({
+            message: "菜单删除成功",
+            type: "success",
+          });
+          //刷新出新的菜单
+          this.getMenus();
+          //设置需要默认展开的菜单
+          this.expandedKey = [node.parent.data.catId];
+        }).catch(
+          () => {}
+        );
       });
     },
   },
