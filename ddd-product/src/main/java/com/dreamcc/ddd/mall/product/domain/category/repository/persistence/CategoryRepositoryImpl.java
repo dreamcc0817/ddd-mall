@@ -1,6 +1,7 @@
 package com.dreamcc.ddd.mall.product.domain.category.repository.persistence;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.dreamcc.ddd.mall.product.domain.category.entity.CategoryEntity;
 import com.dreamcc.ddd.mall.product.domain.category.repository.facade.CategoryRepositoryInterface;
 import com.dreamcc.ddd.mall.product.domain.category.repository.mapper.CategoryDao;
 import com.dreamcc.ddd.mall.product.domain.category.repository.po.CategoryPO;
@@ -29,7 +30,22 @@ public class CategoryRepositoryImpl  implements CategoryRepositoryInterface {
     }
 
     @Override
+    public int save(CategoryPO categoryPO) {
+        return categoryDao.insert(categoryPO);
+    }
+
+    @Override
     public int deleteCategory(List<String> ids) {
         return categoryDao.deleteBatchIds(ids);
+    }
+
+    @Override
+    public int update(CategoryPO categoryPO) {
+        return categoryDao.updateById(categoryPO);
+    }
+
+    @Override
+    public CategoryPO categoryInfo(Long id) {
+        return categoryDao.selectById(id);
     }
 }

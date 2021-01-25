@@ -14,5 +14,11 @@ public interface CategoryRepositoryInterface {
 
     List<CategoryPO> getAllCategory();
 
+    int save(CategoryPO categoryPO);
+
     int deleteCategory(List<String> id);
+
+    int update(CategoryPO categoryPO);
+
+    CategoryPO categoryInfo(Long id);
 }

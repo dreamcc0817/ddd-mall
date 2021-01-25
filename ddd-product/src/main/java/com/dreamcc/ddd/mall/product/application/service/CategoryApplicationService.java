@@ -22,7 +22,34 @@ public class CategoryApplicationService {
         this.categoryService = categoryService;
     }
 
-    public List<CategoryEntity> assemblyCategory(){
+    /**
+     * 获取三级目录
+     * @return 三级目录
+     */
+    public List<CategoryEntity> getAssermblyCategory(){
+        List list = categoryService.getAssermblyCategory();
         return categoryService.getAssermblyCategory();
+    }
+
+    public void saveCategory(CategoryEntity categoryEntity){
+        categoryService.saveCategory(categoryEntity);
+    }
+
+
+    public void updateCategory(CategoryEntity categoryEntity) {
+        categoryService.updateCategory(categoryEntity);
+    }
+
+    /**
+     * 删除目录
+     * @param ids 目录ID
+     * @return 删除数量
+     */
+    public int deleteCategory(List<String> ids){
+        return categoryService.deleteCategory(ids);
+    }
+
+    public CategoryEntity categoryInfo(Long id) {
+        return categoryService.categoryInfo(id);
     }
 }

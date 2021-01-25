@@ -59,13 +59,4 @@ public class CategoryEntity implements Serializable {
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private List<CategoryEntity> children;
 
-    /**
-     *
-     * @return
-     */
-    public List<CategoryEntity> assemblyCategory(){
-
-        return null;
-    }
-
 }

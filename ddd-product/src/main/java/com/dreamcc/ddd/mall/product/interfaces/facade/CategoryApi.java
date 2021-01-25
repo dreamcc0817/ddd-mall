@@ -1,7 +1,8 @@
 package com.dreamcc.ddd.mall.product.interfaces.facade;
 
 
-import com.dreamcc.ddd.mall.product.domain.category.service.CategoryService;
+import com.dreamcc.ddd.mall.product.application.service.CategoryApplicationService;
+import com.dreamcc.ddd.mall.product.domain.category.entity.CategoryEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import utils.R;
@@ -19,9 +20,9 @@ import java.util.List;
 @RequestMapping("/category")
 public class CategoryApi {
 
-    private final CategoryService categoryService;
+    private final CategoryApplicationService categoryService;
 
-    public CategoryApi(CategoryService categoryService) {
+    public CategoryApi(CategoryApplicationService categoryService) {
         this.categoryService = categoryService;
     }
 
@@ -30,10 +31,26 @@ public class CategoryApi {
         return R.ok().put("result", categoryService.getAssermblyCategory());
     }
 
-    @DeleteMapping("/deleteCategory")
-    public R deleteCategory(@RequestParam List<String> ids) {
+    @PostMapping("/deleteCategory")
+    public R deleteCategory(@RequestBody List<String> ids) {
         categoryService.deleteCategory(ids);
         return R.ok();
     }
 
+    @PostMapping("/saveCategory")
+    public R saveCategory(@RequestBody CategoryEntity categoryEntity) {
+        categoryService.saveCategory(categoryEntity);
+        return R.ok();
+    }
+
+    @PostMapping("/updateCategory")
+    public R updateCategory(@RequestBody CategoryEntity categoryEntity){
+        categoryService.updateCategory(categoryEntity);
+        return R.ok();
+    }
+
+    @GetMapping("/info/{id}")
+    public R categoryInfo(@PathVariable Long id){
+        return R.ok().put("data",categoryService.categoryInfo(id));
+    }
 }

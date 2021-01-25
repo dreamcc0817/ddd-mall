@@ -17,6 +17,18 @@ import java.util.stream.Collectors;
 @Service
 public class CategoryFactory {
 
+
+    /**
+     * ENTITY转换为PO
+     * @param categoryEntity 目录信息
+     * @return CategoryPO
+     */
+    public CategoryPO createCategoryPO(CategoryEntity categoryEntity){
+        CategoryPO categoryPO = new CategoryPO();
+        BeanUtils.copyProperties(categoryEntity,categoryPO);
+        return categoryPO;
+    }
+
     /**
      * PO转换为ENTITY
      * @param categoryPO PO
