@@ -15,7 +15,7 @@
 	<description>公共服务</description>
 
 	<properties>
-		<java.version>15</java.version>
+		<java.version>8</java.version>
 	</properties>
 
 	<dependencyManagement>

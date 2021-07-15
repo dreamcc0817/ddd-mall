@@ -4,13 +4,19 @@ server:
     context-path: /product
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/ddd-mall?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/gulimall_pms?serverTimezone=UTC
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
     nacos:
       server-addr: 127.0.0.1:8848
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: 0  #删除
+      logic-not-delete-value: 1 #存在
+      id-type: auto
 logging:
   level:
     com.dreamcc.ddd.mall: debug
